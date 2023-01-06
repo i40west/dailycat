@@ -6,8 +6,8 @@ picture, and renews that picture each day from [The Cat API](https://thecatapi.c
 Hit `/cat` to get a cat picture.
 
 Expects an API key in a `CAT_API_KEY` environment variable. You can put
-it there with `wrangler secret put CAT_API_KEY`. There is a cron trigger
-to hit the API once per day.
+it there with `wrangler secret put CAT_API_KEY` with the variable set
+in `.dev.vars`. There is a cron trigger to hit the API once per day.
 
 Expects a KV namespace bound to `env.meow`. You can do this in the
 Cloudflare dashboard, or with `wrangler kv:namespace create "meow"`.
