@@ -33,7 +33,7 @@ async function getCat(event, env) {
 	try {
 		// Perform a GET request to the cat API to retrieve an image.
 		// CAT_API_KEY should be set with `wrangler secret put CAT_API_KEY`
-		const response = await fetch('https://api.thecatapi.com/v1/images/search?size=full', {
+		const response = await fetch('https://api.thecatapi.com/v1/images/search?size=full&mime_types=jpg', {
 			headers: { 'x-api-key': env.CAT_API_KEY },
 		});
 		if (!response.ok) {
