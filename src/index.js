@@ -29,6 +29,8 @@ router.get('/cat', async (request, env) => {
 // Manually make it get a new image.
 router.get('/renew', (request, env) => getCat(request, env));
 
+router.all('*', () => new Response('Not Found.', { status: 404 }))
+
 async function getCat(event, env) {
 	try {
 		// Perform a GET request to the cat API to retrieve an image.
