@@ -2,11 +2,15 @@ name = "dailycat"
 main = "src/index.js"
 compatibility_date = "2022-12-16"
 account_id = "c4181c74ba33fc8edf2d8cca0dc37bd1"
-usage_model = "bundled"
 workers_dev = false
 kv_namespaces = [ { binding = "meow", id = "56eca4985cda4828a869500462e3295a", preview_id = "56eca4985cda4828a869500462e3295a" } ]
 
-[env.dev]
-name = "dailycat-dev"
 [triggers]
 crons = [ "1 5 * * *" ]
+
+[env.dev]
+compatibility_date = "2023-11-27"
+kv_namespaces = [ { binding = "meow", id = "56eca4985cda4828a869500462e3295a", preview_id = "56eca4985cda4828a869500462e3295a" } ]
+
+[env.dev.triggers]
+crons = []
