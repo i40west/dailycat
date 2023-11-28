@@ -15,9 +15,6 @@ The `wrangler.toml` file should be configured with the namespace ID.
 
 Your Cloudflare account ID also needs to be in `wrangler.toml`.
 
-The Github Actions deployment will need a `CF_API_TOKEN` secret, which
-you can get from the Cloudflare dashboard.
-
 If you don't like today's cat, send a GET request to `/renew` to make
 it fetch a new one.
 
