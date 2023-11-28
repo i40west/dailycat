@@ -1,19 +1,19 @@
-import { Router } from 'itty-router'
+import { Hono } from 'hono';
 
-const router = Router();
+const app = new Hono();
 
-router.get('/', () => {
+app.get('/', () => {
 	return new Response("I'm a teapot.", { status: 418 });
 });
 
-router.get('/cat', async (request, env) => {
+app.get('/cat', async (c) => {
 	// Retrieve the image and metadata from the KV store
-	const { value, metadata } = await env.meow.getWithMetadata('today', { type: 'stream' });
+	const { value, metadata } = await c.env.meow.getWithMetadata('today', { type: 'stream' });
 
 	// If the returned value is null, return a 404 response.
 	if (value === null) {
 		console.log("No cat image found for today");
-		return new Response('Not found', { status: 404 });
+		return c.notFound();
 	}
 
 	// Use the contentType property of the metadata object as the Content-Type header,
@@ -27,11 +27,11 @@ router.get('/cat', async (request, env) => {
 });
 
 // Manually make it get a new image.
-router.get('/renew', (request, env) => getCat(request, env));
+app.get('/renew', (c) => getCat(c.env));
 
-router.all('*', () => new Response('Not Found.', { status: 404 }))
+app.all('*', (c) => c.notFound());
 
-async function getCat(event, env) {
+async function getCat(env) {
 	try {
 		// Perform a GET request to the cat API to retrieve an image.
 		// CAT_API_KEY should be set with `wrangler secret put CAT_API_KEY`
@@ -59,7 +59,7 @@ async function getCat(event, env) {
 				height
 			}
 		});
-		return new Response('OK', { status: 200 });
+		return new Response('ok', { status: 200 });
 	} catch (error) {
 		return new Response(error.message, {
 			status: 500,
@@ -69,7 +69,6 @@ async function getCat(event, env) {
 }
 
 export default {
-	fetch: router.handle,
-	scheduled: (event, env, ctx) => { ctx.waitUntil(getCat(event, env, ctx)) },
+	fetch: app.fetch,
+	scheduled: async (_, env, ctx) => { ctx.waitUntil(getCat(env)) },
 }
-

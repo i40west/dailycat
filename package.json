@@ -1,17 +1,18 @@
 {
   "name": "dailycat",
-  "version": "0.2.0",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
   "devDependencies": {
     "eslint": "^8.54.0",
     "wrangler": "^3.17.1"
   },
-  "private": true,
   "scripts": {
     "start": "wrangler dev",
     "deploy": "wrangler deploy",
     "deploy-dev": "wrangler deploy --env dev"
   },
   "dependencies": {
-    "itty-router": "^2.6.6"
+    "hono": "^3.10.2"
   }
 }
