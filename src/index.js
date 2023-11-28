@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 
-const app = new Hono();
+let app = new Hono();
 
 app.get('/', () => {
 	return new Response("I'm a teapot.", { status: 418 });
@@ -29,7 +29,8 @@ app.get('/cat', async (c) => {
 // Manually make it get a new image.
 app.get('/renew', (c) => getCat(c.env));
 
-app.all('*', (c) => c.notFound());
+// Optional subpath
+app = app.route('/dailycat', app);
 
 async function getCat(env) {
 	try {
