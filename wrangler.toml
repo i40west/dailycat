@@ -9,7 +9,7 @@ kv_namespaces = [ { binding = "meow", id = "56eca4985cda4828a869500462e3295a", p
 crons = [ "1 5 * * *" ]
 
 [env.dev]
-compatibility_date = "2023-11-27"
+compatibility_date = "2024-03-26"
 kv_namespaces = [ { binding = "meow", id = "56eca4985cda4828a869500462e3295a", preview_id = "56eca4985cda4828a869500462e3295a" } ]
 
 [env.dev.triggers]
