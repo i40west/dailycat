@@ -5,9 +5,9 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^9.0.0",
-    "eslint": "^9.0.0",
-    "globals": "^15.0.0",
-    "wrangler": "^3.50.0"
+    "eslint": "^9.5.0",
+    "globals": "^15.6.0",
+    "wrangler": "^3.61.0"
   },
   "scripts": {
     "start": "wrangler dev",
@@ -15,6 +15,6 @@
     "deploy-dev": "wrangler deploy --env dev"
   },
   "dependencies": {
-    "hono": "^4.2.3"
+    "hono": "^4.4.7"
   }
 }
