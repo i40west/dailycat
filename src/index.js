@@ -12,7 +12,7 @@ app.get('/cat', async (c) => {
 
 	// If the returned value is null, return a 404 response.
 	if (value === null) {
-		console.log("No cat image found for today");
+		console.log('No cat image found for today');
 		return c.notFound();
 	}
 
@@ -21,8 +21,8 @@ app.get('/cat', async (c) => {
 	const contentType = metadata.contentType || 'image/jpeg';
 	return new Response(value, {
 		headers: {
-			'Content-Type': contentType
-		}
+			'Content-Type': contentType,
+		},
 	});
 });
 
@@ -57,14 +57,14 @@ async function getCat(env) {
 			metadata: {
 				contentType: imageResponse.headers.get('Content-Type'),
 				width,
-				height
-			}
+				height,
+			},
 		});
 		return new Response('ok', { status: 200 });
 	} catch (error) {
 		return new Response(error.message, {
 			status: 500,
-			statusText: 'Internal Server Error'
+			statusText: 'Internal Server Error',
 		});
 	}
 }
@@ -72,4 +72,4 @@ async function getCat(env) {
 export default {
 	fetch: app.fetch,
 	scheduled: async (_, env, ctx) => { ctx.waitUntil(getCat(env)) },
-}
+};
