@@ -11,7 +11,7 @@ in `.dev.vars`. There is a cron trigger to hit the API once per day.
 
 Expects a KV namespace bound to `env.meow`. You can do this in the
 Cloudflare dashboard, or with `wrangler kv:namespace create "meow"`.
-The `wrangler.toml` file should be configured with the namespace ID (replacing mine).
+The `wrangler.jsonc` file should be configured with the namespace ID (replacing mine).
 
 If you don't like today's cat, send a GET request to `/renew` to make
 it fetch a new one.

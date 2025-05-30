@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dailycat",
+  "main": "src/index.js",
+  "compatibility_date": "2025-05-30",
+  "workers_dev": false,
+  "kv_namespaces": [
+    {
+      "binding": "meow",
+      "id": "56eca4985cda4828a869500462e3295a",
+      "preview_id": "56eca4985cda4828a869500462e3295a"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "1 5 * * *"
+    ]
+  },
+  "env": {
+    "dev": {
+      "compatibility_date": "2025-05-30",
+      "kv_namespaces": [
+        {
+          "binding": "meow",
+          "id": "56eca4985cda4828a869500462e3295a",
+          "preview_id": "56eca4985cda4828a869500462e3295a"
+        }
+      ],
+      "triggers": {
+        "crons": []
+      }
+    }
+  }
+}
