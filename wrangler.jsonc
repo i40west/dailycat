@@ -16,9 +16,15 @@
       "1 5 * * *"
     ]
   },
+  "observability": {
+    "enabled": true
+  },
   "env": {
     "dev": {
       "compatibility_date": "2025-05-30",
+      "observability": {
+        "enabled": true
+      },
       "kv_namespaces": [
         {
           "binding": "meow",
