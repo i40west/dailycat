@@ -27,7 +27,7 @@ app.on('GET', ['/cat.jpg', '/cat'], async (c) => {
 });
 
 // Manually make it get a new image.
-app.get('/renew', (c) => getCat(c.env));
+app.post('/renew', (c) => getCat(c.env));
 
 // Optional subpath
 app = app.route('/dailycat', app);
