@@ -6,7 +6,7 @@ app.get('/', () => {
 	return new Response("I'm a teapot.", { status: 418 });
 });
 
-app.get('/cat', async (c) => {
+app.on('GET', ['/cat.jpg', '/cat'], async (c) => {
 	// Retrieve the image and metadata from the KV store
 	const { value, metadata } = await c.env.meow.getWithMetadata('today', { type: 'stream' });
 
